@@ -10,7 +10,7 @@ import * as CSS from "csstype"
 import {deflattenStyle} from "./impl/SimpleImpl";
 import {ManyChildParentProps} from "./SimpleElementProps";
 import {Color, gradientToCss, isGradient} from "./Color";
-
+// hello test
 export interface TextThemeProps extends ManyChildParentProps {
     /**
      * Set the text-align on the component.
