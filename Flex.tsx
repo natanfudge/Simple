@@ -3,7 +3,7 @@ import * as CSS from "csstype";
 import {ManyChildParentProps} from "./SimpleElementProps";
 import {deflattenStyle} from "./impl/SimpleImpl";
 import {Flex} from "./impl/FlexImpl";
-
+//aaa
 export function Stack(props: ManyChildParentProps) {
     return <div className={"stack"} {...deflattenStyle(props)}/>
 }
