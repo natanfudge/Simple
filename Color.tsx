@@ -1,6 +1,6 @@
 import {isObj} from "crash-parser/src/util/Utils";
 import {CSSProperties} from "react";
-
+//asd
 export type Color = string | Gradient
 
 /**
