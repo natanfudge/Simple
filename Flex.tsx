@@ -9,7 +9,7 @@ export function Stack(props: ManyChildParentProps) {
 }
 
 export function Row(props: FlexProps) {
-    return Flex({flexDirection: "row", ...props})
+    return  Flex({flexDirection: "row", ...props})
 }
 
 export function Column(props: FlexProps) {
