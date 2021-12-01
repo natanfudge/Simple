@@ -99,6 +99,8 @@ export interface TextThemeProps extends ManyChildParentProps {
      * @see https://developer.mozilla.org/docs/Web/CSS/word-break
      */
     wordBreak?: CSS.Property.WordBreak
+
+    spanRef?: React.RefObject<HTMLSpanElement>
 }
 
 export interface TextProps extends Omit<TextThemeProps, 'children'> {
@@ -115,7 +117,7 @@ export function Text(props: TextProps) {
  * Also useful for formatting with <b> and <link> and such
  */
 export function TextTheme(props: TextThemeProps) {
-    const {color, style, fontFamily, fontStyle, whiteSpace, wordBreak, ...otherProps} = deflattenStyle(props);
+    const {color, style, fontFamily, fontStyle, whiteSpace, wordBreak,spanRef, ...otherProps} = deflattenStyle(props);
 
     const actualColor = isGradient(color) ? undefined : color;
 
@@ -126,7 +128,7 @@ export function TextTheme(props: TextThemeProps) {
         WebkitTextFillColor: "transparent"
     } : {}
 
-    return <Typography style={{fontFamily, fontStyle, whiteSpace, wordBreak, ...gradientStyle, ...style}}
+    return <Typography ref={spanRef} style={{fontFamily, fontStyle, whiteSpace, wordBreak, ...gradientStyle, ...style}}
                        color={actualColor}{...otherProps}/>
 }
 
