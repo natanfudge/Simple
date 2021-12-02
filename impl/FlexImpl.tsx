@@ -1,9 +1,9 @@
 import React, {CSSProperties} from "react";
 import {deflattenStyle} from "./SimpleImpl";
 import * as CSS from "csstype";
-import {FlexAlignment, FlexProps} from "../Flex";
+import {FlexAlignment, FlexParentProps} from "../Flex";
 
- interface FlexImplProps extends FlexProps {
+ interface FlexImplProps extends FlexParentProps {
     flexDirection: CSS.Property.FlexDirection
 }
 

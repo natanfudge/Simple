@@ -1,6 +1,6 @@
 import React from "react";
 import * as CSS from "csstype";
-import {ManyChildParentProps} from "./SimpleElementProps";
+import {ElementProps, ManyChildParentProps, WithChildren} from "./SimpleElementProps";
 import {deflattenStyle} from "./impl/SimpleImpl";
 import {Flex} from "./impl/FlexImpl";
 //aaa
@@ -8,19 +8,20 @@ export function Stack(props: ManyChildParentProps) {
     return <div className={"stack"} {...deflattenStyle(props)}/>
 }
 
-export function Row(props: FlexProps) {
+export function Row(props: FlexParentProps) {
     return  Flex({flexDirection: "row", ...props})
 }
 
-export function Column(props: FlexProps) {
+export function Column(props: FlexParentProps) {
     return Flex({flexDirection: "column", ...props})
 }
 
+export type FlexParentProps = FlexProps & WithChildren
 
 /**
  * @see https://css-tricks.com/snippets/css/a-guide-to-flexbox/#flexbox-properties
  */
-export interface FlexProps extends ManyChildParentProps {
+export interface FlexProps extends ElementProps {
     /**
      * The **`flex-wrap`** CSS property sets whether flex items are forced onto one line or can wrap onto multiple lines. If wrapping is allowed, it sets the direction that lines are stacked.
      * @see https://developer.mozilla.org/docs/Web/CSS/flex-wrap
