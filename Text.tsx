@@ -8,7 +8,7 @@ import {SxProps} from "@mui/system";
 import {Theme} from "@mui/material/styles";
 import * as CSS from "csstype"
 import {deflattenStyle} from "./impl/SimpleImpl";
-import {ManyChildParentProps} from "./SimpleElementProps";
+import {ElementProps, ManyChildParentProps, SingleChildParentProps} from "./SimpleElementProps";
 import {Color, gradientToCss, isGradient} from "./Color";
 // hello test
 export interface TextThemeProps extends ManyChildParentProps {
@@ -132,3 +132,17 @@ export function TextTheme(props: TextThemeProps) {
                        color={actualColor}{...otherProps}/>
 }
 
+
+export function SimpleSpan(props: ElementProps & {text: string, color?: Color}){
+    const {text,color,style, ...otherProps} = deflattenStyle(props);
+    //TODO: combine code with upper stuff
+    const gradientStyle: CSSProperties = isGradient(color) ? {
+        background: gradientToCss(color),
+        backgroundClip: "text",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent"
+    } : {color}
+    return <span style = {{...gradientStyle,...style}} {...otherProps}>
+        {text}
+    </span>
+}
