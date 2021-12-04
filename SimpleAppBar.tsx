@@ -8,6 +8,5 @@ import {deflattenStyle} from "./impl/SimpleImpl";
  * @see https://mui.com/components/app-bar/
  */
 export function SimpleAppBar(props: ManyChildParentProps) {
-    const {style, ...otherProps} = deflattenStyle(props);
-    return <AppBar {...otherProps} style={{display: "flex", flexDirection: "row", ...style}}/>
+    return <AppBar {...deflattenStyle(props)}/>
 }
