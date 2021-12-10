@@ -95,6 +95,7 @@ export interface ElementProps extends StyleProps {
      * @deprecated
      */
     style?: CSSProperties;
+    className?: string;
 }
 
 export type WithChildren = {
