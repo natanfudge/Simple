@@ -121,28 +121,23 @@ export function TextTheme(props: TextThemeProps) {
 
     const actualColor = isGradient(color) ? undefined : color;
 
-    const gradientStyle: CSSProperties = isGradient(color) ? {
-        background: gradientToCss(color),
-        backgroundClip: "text",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent"
-    } : {}
-
-    return <Typography ref={spanRef} style={{fontFamily, fontStyle, whiteSpace, wordBreak, ...gradientStyle, ...style}}
+    return <Typography ref={spanRef} style={{fontFamily, fontStyle, whiteSpace, wordBreak, ...gradientStyle(color), ...style}}
                        color={actualColor}{...otherProps}/>
 }
 
 
 export function SimpleSpan(props: ElementProps & {text: string, color?: Color}){
     const {text,color,style, ...otherProps} = deflattenStyle(props);
-    //TODO: combine code with upper stuff
-    const gradientStyle: CSSProperties = isGradient(color) ? {
+    return <span style = {{...gradientStyle(color),...style}} {...otherProps}>
+        {text}
+    </span>
+}
+
+function gradientStyle(color: Color | undefined): CSSProperties {
+    return isGradient(color) ? {
         background: gradientToCss(color),
         backgroundClip: "text",
         WebkitBackgroundClip: "text",
         WebkitTextFillColor: "transparent"
     } : {color}
-    return <span style = {{...gradientStyle,...style}} {...otherProps}>
-        {text}
-    </span>
 }

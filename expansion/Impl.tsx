@@ -150,9 +150,6 @@ function useExpansionPositioning({anchorRect, expansionRect, anchorAlignment, ex
     return {x: coercePreferMin(x, {min: minX, max: maxX}), y: coercePreferMin(y, {min: minY, max: maxY})}
 }
 
-//TODO: benchmark with and without duplicated divs, with and without inline styles
-
-//TODO: consider using limited positioning if this causes performance issues
 function SizeCalculator({
                             depProps,
                             setRect,
