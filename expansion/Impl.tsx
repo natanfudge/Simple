@@ -34,6 +34,8 @@ type ExpansionProps = Require<ManualExpansionProps, "animationDurationMillis" | 
 function ExpansionPortal(props: ExpansionProps) {
     const [completelyClosed, setCompletelyClosed] = useState(false);
     const show = props.show
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const timeoutHandle = useMemo<TimeoutWrapper>(() => ({timeout: undefined}), [show]);
 
     useEffect(() => {
@@ -49,6 +51,7 @@ function ExpansionPortal(props: ExpansionProps) {
             // Existing composition, no need to completely close
             stop(timeoutHandle);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.animationDurationMillis, show, completelyClosed])
 
     // const
